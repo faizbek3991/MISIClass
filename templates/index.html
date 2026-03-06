@@ -8,7 +8,8 @@
 <body class="bg-gray-100">
     <div class="container mx-auto mt-8">
         <h1 class="text-3xl font-bold mb-4">Student Attendance</h1>
-        <form action="/submit" method="post">
+        <button id="colorButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Change Background Color</button>
+        <form action="/submit" method="post" class="mt-4">
             <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
             <input type="date" id="date" name="date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             <br><br>
@@ -44,5 +45,13 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const colorButton = document.getElementById('colorButton');
+        colorButton.addEventListener('click', () => {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
 </body>
 </html>
