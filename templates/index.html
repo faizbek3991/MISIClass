@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Student Attendance</h1>
+        <form action="/submit" method="post">
+            <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
+            <input type="date" id="date" name="date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <br><br>
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">Student</th>
+                        <th class="px-4 py-2">Present</th>
+                        <th class="px-4 py-2">Absent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .}}
+                    <tr>
+                        <td class="border px-4 py-2">{{.Name}}</td>
+                        <td class="border px-4 py-2"><input type="radio" name="student_{{.ID}}" value="present" required class="mr-2"></td>
+                        <td class="border px-4 py-2"><input type="radio" name="student_{{.ID}}" value="absent"></td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+            <br>
+            <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </form>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold mb-4">Add Student</h2>
+            <form action="/add-student" method="post">
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Student Name:</label>
+                <input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <br><br>
+                <input type="submit" value="Add Student" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
